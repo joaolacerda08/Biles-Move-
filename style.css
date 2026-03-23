@@ -133,6 +133,30 @@ a {
     }
 }
 
+/* Safari-only menu tweak */
+@supports (-webkit-touch-callout: none) {
+    .hamburger {
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        background: rgba(0, 0, 0, 0.14);
+        border-radius: 8px;
+    }
+
+    .hamburger span {
+        background: #ffffff;
+        height: 5px;
+    }
+
+    .nav-list {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav.active .nav-list {
+        pointer-events: all;
+    }
+}
+
+
 #loading-overlay {
     position: fixed;
     inset: 0;
