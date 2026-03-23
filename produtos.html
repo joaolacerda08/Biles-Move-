@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav" data-page="produtos">
+            <h1>Biles Move!</h1>
+            <button class="hamburger" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-list">
+                <li><a href="historia.html">História</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="desenvolvedores.html">Desenvolvedores</a></li>
+                <li><a href="acoes.html">Ações</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="conteiner">
+        <section id="content">
+            <h1>Produtos</h1>
+            <p>Esta é a página de Produtos.</p>
+        </section>
+    </div>
+
+    <main>
+        <h2>O que oferecemos</h2>
+        <p>Conteúdo da página de produtos...</p>
+    </main>
+
+    <footer>Todos os Direitos reservados a <a href="">SALA 203</a> &copy;</footer>
+
+    <div id="loading-overlay" class="hidden">Carregando...</div>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const nav = document.querySelector(".nav");
+        const navList = document.querySelector(".nav-list");
+        const loadingOverlay = document.getElementById("loading-overlay");
+
+        const pageName = document.location.pathname.split("/").pop() || "index.html";
+
+        const highlightCurrentOrMapInicio = () => {
+            const currentPage = pageName.toLowerCase();
+            const map = {
+                "historia.html": "História",
+                "produtos.html": "Produtos",
+                "desenvolvedores.html": "Desenvolvedores",
+                "acoes.html": "Ações",
+                "index.html": "Inicio"
+            };
+
+            const currentText = map[currentPage] || "Inicio";
+            navList.querySelectorAll("li > a").forEach(anchor => {
+                if (anchor.textContent.trim().toLowerCase() === currentText.toLowerCase()) {
+                    anchor.textContent = "Inicio";
+                    anchor.href = "index.html";
+                }
+            });
+        };
+
+        const toggleNav = () => {
+            nav.classList.toggle("active");
+            hamburger.classList.toggle("active");
+            document.body.classList.toggle("no-scroll");
+        };
+
+        hamburger.addEventListener("click", toggleNav);
+
+        navList.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", event => {
+                event.preventDefault();
+                const destino = link.getAttribute("href");
+
+                nav.classList.add("active");
+                hamburger.classList.add("active");
+                document.body.classList.add("no-scroll");
+                loadingOverlay.classList.remove("hidden");
+
+                setTimeout(() => {
+                    window.location.href = destino;
+                }, 300);
+            });
+        });
+
+        highlightCurrentOrMapInicio();
+        nav.classList.remove("active");
+        hamburger.classList.remove("active");
+    </script>
+</body>
+</html>

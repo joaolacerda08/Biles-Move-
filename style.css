@@ -1,0 +1,232 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    background-color: #0C2E50;
+    color: #F4F7FA;
+    padding: 16px;
+    padding-top: 20px;
+}
+
+header > h1 {
+    margin-left: 90%;
+}
+
+header > a {
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header{
+    padding-inline: 26px;
+}
+
+.nav {
+    max-width: 1280px;
+    height: 25px;
+    margin-inline: auto;
+    align-items: center;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-list {
+    margin-top: 20px;
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-list a {
+    font-size: 18px;
+    font-family: sans-serif;
+    color: #d5e1ee;
+    padding-block: 16px;
+}
+
+.hamburger {
+    display: none;
+    border: none;
+    background: transparent;
+    width: 36px;
+    height: 32px;
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+    gap: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    margin-block: 5px;
+    background: #eef6ff;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* opcional: leve rotação no clique */
+.hamburger-active {
+    transform: rotate(0deg);
+}
+
+@media (max-width: 750px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-list {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100%;
+        background: #0C2E50;
+        clip-path: circle(100px at 90% -15%);
+        transition: all 1s ease-in-out;
+        z-index: 9999;
+
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        gap: 0;
+        pointer-events: none;
+    }
+
+    .nav.active .nav-list {
+        clip-path: circle(1500px at 90% -15%);
+        pointer-events: all;
+    }
+}
+
+#loading-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 11000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+#loading-overlay:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+div {
+    background-image: url(https://www.galeriadaarquitetura.com.br/Img/projeto/SF1/5417/clinica-de-fisioterapia-e-pilates2218.jpg);
+    background-position:  center;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 80vh;
+    box-shadow: inset 0px 0px 10px 4px;
+}
+
+#container {
+    position: relative;
+}
+
+#content > h1 {
+    margin-top: 100px;
+    color: #001A33;
+    font-family: sans-serif;
+    font-size: 2.8em;
+}
+
+#content {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.082);
+    width: 80%;
+    height: 300px;
+    padding: 15px;
+    border-radius: 26px;
+    text-align: center;
+    border: 1px solid gray;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow:  0px 0px 50px 4px rgba(0, 0, 0, 0.774);
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+}
+
+main > p {
+    text-align: justify;
+    font-family: sans-serif;
+}
+
+main > h2 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+main {
+    padding: 20px;
+    background-color: #d5e1ee;
+    color: rgb(0, 0, 0);
+}
+
+footer {
+    background-color: #0C2E50;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    font-family: sans-serif;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer > a {
+    color: rgb(98, 81, 141);
+    font-weight: 600;
+}
