@@ -182,62 +182,78 @@ body.no-scroll {
     pointer-events: auto;
 }
 
-div {
-    background-image: url(https://www.galeriadaarquitetura.com.br/Img/projeto/SF1/5417/clinica-de-fisioterapia-e-pilates2218.jpg);
-    background-position:  center;
-    background-size: cover;
-    background-attachment: fixed;
-    width: 100%;
-    height: 80vh;
-    box-shadow: inset 0px 0px 10px 4px;
+/*CONTEUDO GERAL*/
+.imagemproduto {
+    background-image: url(Imagens/fisioterapia.jpg);
+    background-position: center left;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 230px;
+    height: 220px;
+    border: 3px solid #001A33;
+    border-radius: 10px;
+    flex-shrink: 0;
 }
 
-#container {
+.descricaoproduto {
+    display: inline;
+    text-align: center;
+}
+
+p {
+    text-align: left;
+    padding-top: 20px;
+}
+
+#produto1 {
+    background-color: #c6ced6;
+    max-width: min(600px, 92vw);
     position: relative;
-}
-
-#content > h1 {
-    margin-top: 100px;
-    color: #001A33;
-    font-family: sans-serif;
-    font-size: 2.8em;
-}
-
-#content {
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.082);
-    width: 80%;
-    height: 300px;
-    padding: 15px;
-    border-radius: 26px;
-    text-align: center;
-    border: 1px solid gray;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow:  0px 0px 50px 4px rgba(0, 0, 0, 0.774);
-
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -60%);
-}
-
-main > p {
-    text-align: justify;
-    font-family: sans-serif;
+    padding: 10px;
     margin-block: 20px;
+    margin-inline: auto;
+    border-radius: 26px;
+    font-family: sans-serif;
+
+    
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    cursor: pointer;
 }
 
-main > h2 {
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 25px;
+.imagemproduto2 {
+    background-image: url(Imagens/roupas.png);
+    background-position: center left;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 230px;
+    height: 220px;
+    border: 3px solid #001A33;
+    border-radius: 10px;
+    flex-shrink: 0;
 }
 
-main {
-    padding: 20px;
-    background-color: #d5e1ee;
-    color: rgb(0, 0, 0);
+#produto2 {
+    background-color: #c6ced6;
+    max-width: min(600px, 92vw);
+    position: relative;
+    padding: 10px;
+    margin-block: 20px;
+    margin-inline: auto;
+    border-radius: 26px;
+    font-family: sans-serif;
+
+    
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    cursor: pointer;
 }
+
+
 
 footer {
     background-color: #0C2E50;
