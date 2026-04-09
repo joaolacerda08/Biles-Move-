@@ -118,7 +118,7 @@
         const valorPorSecao = 40;
 
         const atualizarValorTotal = () => {
-            let quantidade = Number(quantidadeInput.value) || 1;
+            let quantidade = Number(quantidadeInput.value) || 0;
             if (quantidade < 0) quantidade = 0;
             if (quantidade > 5) quantidade = 5;
             quantidadeInput.value = quantidade;
