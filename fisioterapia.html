@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiseoterapia</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            background-color: gray;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        div {
+            background-color: rgba(240, 248, 255, 0.24);
+            backdrop-filter: blur(8px);
+            max-width: 88vw;
+            margin: auto;
+            margin-top: 16vh;
+            padding: 15px;
+            border: 1px solid white;
+            border-radius: 26px;
+        }
+
+        div > p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        strong {
+            color: rgb(69, 230, 21);
+            font-weight: 600;
+        }
+
+        ul{
+            list-style-position: inside;
+            text-align: justify;
+            padding-block: 20px;
+        }
+
+        aside {
+            margin-top:20px;
+        }
+
+        h2, h1 {
+            text-align: center;
+        }
+
+        input {
+            margin-bottom: 8px;
+            padding: 6px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 6px;
+            transition: all 0.4s ease-in-out;
+            margin: auto;
+            display: flex;
+            width: 40vw;
+            margin-bottom: 15px;
+        }
+
+        input:hover {
+            background-color: black;
+            color: white;
+        }
+
+        form > p {
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        #enviar {
+            padding: 8px;
+            margin-top: 10px;
+            font-size: 1em;
+        }
+
+        #enviar:hover {
+            color: white;
+            background-color: rgb(64, 209, 20);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Reserve já suas aulas de fiseoterapia!</h1>
+        <p>Nos informe somente as seguintes informações:
+            <ul>
+                <li>Nome</li>
+                <li>Data</li>
+                <li>Horário</li>
+                <li>Quantidade de seções</li>
+            </ul>
+        </p>
+
+        <section>
+            <form id="formulario" method="GET" action="fiseoconcluida.html">
+                <p>Nome: <input type="text" id="nome" name="nome" required></p>
+                <p>Data: <input type="date" id="data" name="data" required></p>
+                <p>Horário: <input type="time" id="horario" name="horario" min="07:00" max="19:00" step="1800" required></p>
+                <p>Quantidade: <input type="number" min="1" max="5" id="quantidade" name="quantidade" required></p>
+                <aside>
+                    <h2>Valor total: <strong id="valor-total">R$ 40</strong></h2>
+                </aside>
+                <input type="submit" name="send" id="enviar" value="Enviar">
+            </form>
+        </section>
+    </div>
+
+    <script>
+        const quantidadeInput = document.getElementById('quantidade');
+        const valorTotalElement = document.getElementById('valor-total');
+        const valorPorSecao = 40;
+
+        const atualizarValorTotal = () => {
+            let quantidade = Number(quantidadeInput.value) || 1;
+            if (quantidade < 1) quantidade = 1;
+            if (quantidade > 5) quantidade = 5;
+            quantidadeInput.value = quantidade;
+
+            const total = quantidade * valorPorSecao;
+            if (valorTotalElement) {
+                valorTotalElement.textContent = `R$ ${total}`;
+            }
+        };
+
+        quantidadeInput.addEventListener('change', atualizarValorTotal);
+        quantidadeInput.addEventListener('input', atualizarValorTotal);
+
+        atualizarValorTotal();
+    </script>
+</body>
+</html>

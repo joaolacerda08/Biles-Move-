@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrigado(a)!</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            background-color: gray;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        main {
+            background-color: rgba(240, 248, 255, 0.24);
+            backdrop-filter: blur(8px);
+            max-width: 80vw;
+            margin: auto;
+            margin-top: 30vh;
+            padding: 15px;
+            border: 1px solid white;
+            border-radius: 26px;
+        }
+
+        #message {
+            text-align: center;
+            color: rgb(5, 5, 73);
+        }
+
+        #details{
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.4em;
+        }
+
+        a {
+            display: block;
+            margin: auto;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            padding: 8px;
+            text-decoration: none;
+            color: red;
+            width: 220px;
+            border-radius: 8px;
+            transition: all 0.4s;
+        }
+
+        a:hover {
+            background-color: red;
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1 id="message">Obrigado(a)!</h1>
+        <p id="details">Seus dados estão sendo processados...</p>
+        <a href="produtos.html">Volte para os produtos!</a>
+    </main>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const nome = params.get('nome') || "cliente";
+        const rawData = params.get('data');
+        const horario = params.get('horario') || "[horário não informado]";
+        const quantidade = params.get('quantidade') || "[quantidade não informada]";
+
+        const formatDate = value => {
+            if (!value) return "[data não informada]";
+            const parts = value.split('-');
+            return parts.length === 3 ? `${parts[2]}/${parts[1]}/${parts[0]}` : value;
+        };
+
+        const data = formatDate(rawData);
+
+        const title = document.getElementById('message');
+        const details = document.getElementById('details');
+
+        if (title) {
+            title.textContent = `Obrigado(a) ${nome}!`;
+        }
+
+        if (details) {
+            details.textContent = `Suas ${quantidade} seções de fiseoterapia foram agendadas para o dia ${data} com sucesso, tendo início às ${horario} horas! Valeu pela confiança em nosso trabalho!`;
+        }
+    </script>
+</body>
+</html>

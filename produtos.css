@@ -183,13 +183,40 @@ body.no-scroll {
 }
 
 /*CONTEUDO GERAL*/
+
+body {
+    background-color: #212535;
+}
+
+div > p, div > h1 {
+    color: #f4faff;
+    text-align: center;
+    padding-block: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#produto1:hover {
+    background-color: #ffffff;
+}
+
+#produto2:hover {
+    background-color: #ffffff;
+}
+
+a > section {
+    color: black;
+}
+
+
+
 .imagemproduto {
     background-image: url(Imagens/fisioterapia.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 100px;
-    height: 220px;
+    min-width: 230px;       
+    max-width: 500px;       
+    height: 270px;
     border: 3px solid #001A33;
     border-radius: 10px;
     flex-shrink: 0;
@@ -208,6 +235,7 @@ p {
 #produto1 {
     background-color: #c6ced6;
     max-width: min(600px, 92vw);
+    height: 300px;
     position: relative;
     padding: 10px;
     margin-block: 20px;
@@ -228,9 +256,9 @@ p {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    min-width: 100px;       
-    max-width: 230px;       
-    height: 220px;
+    min-width: 230px;       
+    max-width: 500px;       
+    height: 270px;
     border: 3px solid #001A33;
     border-radius: 10px;
     flex-shrink: 0;
@@ -239,6 +267,7 @@ p {
 #produto2 {
     background-color: #c6ced6;
     max-width: min(600px, 92vw);
+    height: 300px;
     position: relative;
     padding: 10px;
     margin-block: 20px;
@@ -257,18 +286,24 @@ p {
 
 
 footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     background-color: #0C2E50;
     color: white;
     text-align: center;
     padding: 8px;
     font-family: sans-serif;
+    display: block;
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 footer > a {
     color: rgb(98, 81, 141);
     font-weight: 600;
+
 }
