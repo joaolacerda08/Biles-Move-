@@ -103,7 +103,7 @@
                 <p>Nome: <input type="text" id="nome" name="nome" required></p>
                 <p>Data: <input type="date" id="data" name="data" required></p>
                 <p>Horário: <input type="time" id="horario" name="horario" min="07:00" max="19:00" step="1800" required></p>
-                <p>Quantidade: <input type="number" min="1" max="5" id="quantidade" name="quantidade" required></p>
+                <p>Quantidade: <input type="number" min="0" max="5" id="quantidade" name="quantidade" required></p>
                 <aside>
                     <h2>Valor total: <strong id="valor-total">R$ 40</strong></h2>
                 </aside>
@@ -119,7 +119,7 @@
 
         const atualizarValorTotal = () => {
             let quantidade = Number(quantidadeInput.value) || 1;
-            if (quantidade < 1) quantidade = 1;
+            if (quantidade < 0) quantidade = 0;
             if (quantidade > 5) quantidade = 5;
             quantidadeInput.value = quantidade;
 
