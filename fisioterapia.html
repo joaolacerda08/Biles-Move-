@@ -3,113 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiseoterapia</title>
+    <title>Fisioterapia</title>
     <style>
+        :root {
+            --bg: #050505;
+            --panel: rgba(18, 18, 18, 0.86);
+            --border: rgba(212, 175, 55, 0.28);
+            --text: #f6e9be;
+            --text-muted: #bdb08a;
+            --gold: #d4af37;
+            --green: #1e3f2d;
+            --blue: #0f3d6f;
+            --purple: #472a56;
+            --shadow: 0 26px 68px rgba(0, 0, 0, 0.4);
+        }
+
         * {
-            margin: 0px;
-            padding: 0px;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: gray;
-            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            background: radial-gradient(circle at top left, rgba(212,175,55,0.14), transparent 20%),
+                        radial-gradient(circle at bottom right, rgba(71, 38, 114, 0.18), transparent 22%),
+                        linear-gradient(180deg, #070707 0%, #070607 100%);
+            color: var(--text);
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         }
 
-        div {
-            background-color: rgba(240, 248, 255, 0.24);
-            backdrop-filter: blur(8px);
-            max-width: 80vw;
-            margin: auto;
-            margin-top: 20px;
-            padding: 15px;
-            border: 1px solid white;
-            border-radius: 26px;
+        .page-wrapper {
+            max-width: 980px;
+            margin: 32px auto;
+            padding: 0 20px 40px;
         }
 
-        div > p {
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            padding: 32px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 3.4vw, 3rem);
             text-align: center;
-            margin-top: 20px;
+            margin-bottom: 18px;
+            letter-spacing: 0.12em;
         }
 
-        strong {
-            color: rgb(69, 230, 21);
-            font-weight: 600;
-        }
-
-        ul{
-            list-style-position: inside;
-            text-align: justify;
-            padding-block: 20px;
-        }
-
-        aside {
-            margin-top:20px;
-        }
-
-        h2, h1 {
+        .headline {
+            display: block;
             text-align: center;
+            color: var(--gold);
+            margin-bottom: 28px;
+            font-size: 0.96rem;
+            letter-spacing: 0.18em;
         }
 
-        input {
+        .content {
+            display: grid;
+            gap: 28px;
+        }
+
+        .info-block {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 22px;
+            padding: 24px;
+        }
+
+        p {
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        ul {
+            list-style: inside disc;
+            color: var(--text);
+            padding-left: 18px;
+            margin-bottom: 18px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
             margin-bottom: 8px;
-            padding: 6px;
-            background-color: white;
-            color: black;
-            border: none;
-            border-radius: 6px;
-            transition: all 0.4s ease-in-out;
-            margin: auto;
-            display: flex;
-            width: 40vw;
-            margin-bottom: 15px;
+            font-weight: 600;
+            color: var(--gold);
         }
 
-        input:hover {
-            background-color: black;
-            color: white;
+        input,
+        button {
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid rgba(212,175,55,0.22);
+            padding: 14px 16px;
+            font-size: 1rem;
+            color: var(--text);
+            background: rgba(255,255,255,0.05);
+            outline: none;
         }
 
-        form > p {
-            font-size: 1.2em;
-            text-align: center;
+        input:focus,
+        button:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px rgba(212,175,55,0.12);
         }
 
-        #enviar {
-            padding: 8px;
-            margin-top: 10px;
-            font-size: 1em;
+        input[type="submit"] {
+            background: linear-gradient(135deg, rgba(212,175,55,0.95), rgba(255,214,95,0.75));
+            color: #080808;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 12px;
         }
 
-        #enviar:hover {
-            color: white;
-            background-color: rgb(64, 209, 20);
+        input[type="submit"]:hover {
+            filter: brightness(1.04);
+        }
+
+        .total-box {
+            margin-top: 14px;
+            padding: 18px 20px;
+            border-radius: 22px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(212,175,55,0.18);
+        }
+
+        .total-box h2 {
+            font-size: 1.1rem;
+            letter-spacing: 0.04em;
+            color: var(--text);
+        }
+
+        .total-box strong {
+            color: var(--gold);
+        }
+
+        @media (max-width: 720px) {
+            .page-wrapper {
+                margin: 20px auto;
+                padding: 0 14px 30px;
+            }
+
+            .card {
+                padding: 24px;
+            }
         }
     </style>
 </head>
 <body>
-    <div>
-        <h1>Reserve já suas aulas de fiseoterapia!</h1>
-        <p>Nos informe somente as seguintes informações:
-            <ul>
-                <li>Nome</li>
-                <li>Data</li>
-                <li>Horário</li>
-                <li>Quantidade de seções</li>
-            </ul>
-        </p>
+    <div class="page-wrapper">
+        <div class="card">
+            <span class="headline">RESERVE SUA SESSÃO</span>
+            <h1>Fisioterapia Premium</h1>
+            <div class="content">
+                <div>
+                    <p>Agende sua sessão de fisioterapia com atenção personalizada, conforto e resultados rápidos. Preencha os dados abaixo para confirmar sua reserva.</p>
+                </div>
+                <section class="info-block">
+                    <form id="formulario" method="GET" action="fiseoconcluida.html">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" required>
 
-        <section>
-            <form id="formulario" method="GET" action="fiseoconcluida.html">
-                <p>Nome: <input type="text" id="nome" name="nome" required></p>
-                <p>Data: <input type="date" id="data" name="data" required></p>
-                <p>Horário: <input type="time" id="horario" name="horario" min="07:00" max="19:00" step="1800" required></p>
-                <p>Quantidade: <input type="number" min="0" max="5" id="quantidade" name="quantidade" required></p>
-                <aside>
-                    <h2>Valor total: <strong id="valor-total">R$ 40</strong></h2>
-                </aside>
-                <input type="submit" name="send" id="enviar" value="Enviar">
-            </form>
-        </section>
+                        <label for="data">Data</label>
+                        <input type="date" id="data" name="data" required>
+
+                        <label for="horario">Horário</label>
+                        <input type="time" id="horario" name="horario" min="07:00" max="19:00" step="1800" required>
+
+                        <label for="quantidade">Quantidade de seções</label>
+                        <input type="number" min="0" max="5" id="quantidade" name="quantidade" required>
+
+                        <div class="total-box">
+                            <h2>Valor total: <strong id="valor-total">R$ 40</strong></h2>
+                        </div>
+
+                        <input type="submit" name="send" id="enviar" value="Enviar">
+                    </form>
+                </section>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -124,9 +206,7 @@
             quantidadeInput.value = quantidade;
 
             const total = quantidade * valorPorSecao;
-            if (valorTotalElement) {
-                valorTotalElement.textContent = `R$ ${total}`;
-            }
+            valorTotalElement.textContent = `R$ ${total}`;
         };
 
         quantidadeInput.addEventListener('change', atualizarValorTotal);

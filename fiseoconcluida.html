@@ -1,96 +1,192 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Obrigado(a)!</title>
     <style>
+        :root {
+            --bg: #050505;
+            --panel: rgba(18, 18, 18, 0.92);
+            --border: rgba(212, 175, 55, 0.28);
+            --text: #f6e9be;
+            --text-muted: #bdb08a;
+            --gold: #e9d694;
+            --gold-strong: #f7e3a8;
+            --success: #9fcd8f;
+            --shadow: 0 26px 68px rgba(0, 0, 0, 0.4);
+        }
+
         * {
-            margin: 0px;
-            padding: 0px;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: gray;
-            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top left, rgba(212,175,55,0.14), transparent 18%),
+                        radial-gradient(circle at bottom right, rgba(71, 38, 114, 0.16), transparent 22%),
+                        linear-gradient(180deg, #070707 0%, #070607 100%);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
         }
 
-        main {
-            background-color: rgba(240, 248, 255, 0.24);
-            backdrop-filter: blur(8px);
-            max-width: 80vw;
-            margin: auto;
-            margin-top: 50%;
-            padding: 15px;
-            border: 1px solid white;
-            border-radius: 26px;
+        .card {
+            width: min(720px, 100%);
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(60px);
         }
 
-        #message {
-            text-align: center;
-            color: rgb(5, 5, 73);
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        #details{
-            text-align: center;
-            margin-top: 20px;
-            font-size: 1.4em;
+        .card-inner {
+            padding: 38px 36px;
         }
 
-        a {
-            display: block;
-            margin: auto;
-            text-align: center;
-            margin-top: 20px;
-            font-size: 1.2em;
-            padding: 8px;
+        .headline {
+            display: inline-block;
+            margin-bottom: 18px;
+            color: var(--gold);
+            letter-spacing: 0.18em;
+            font-size: 0.95rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 3.2vw, 2.8rem);
+            margin-bottom: 14px;
+            line-height: 1.02;
+        }
+
+        .message-copy {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .details {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212,175,55,0.14);
+            padding: 24px;
+            border-radius: 24px;
+            display: grid;
+            gap: 18px;
+            margin-bottom: 34px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .detail-item strong {
+            color: var(--gold-strong);
+            font-weight: 700;
+        }
+
+        .detail-item span {
+            color: var(--text);
+        }
+
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 16px 22px;
+            background: linear-gradient(135deg, rgba(212,175,55,0.96), rgba(255,214,95,0.76));
+            border-radius: 18px;
+            color: #090908;
+            font-weight: 700;
             text-decoration: none;
-            color: red;
-            width: 220px;
-            border-radius: 8px;
-            transition: all 0.4s;
+            transition: transform 0.2s ease, filter 0.2s ease;
         }
 
-        a:hover {
-            background-color: red;
-            color: white;
-            text-decoration: underline;
+        .action-link:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.04);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(60px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .card-inner {
+                padding: 28px 22px;
+            }
+
+            .detail-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
 <body>
-    <main>
-        <h1 id="message">Obrigado(a)!</h1>
-        <p id="details">Seus dados estão sendo processados...</p>
-        <a href="produtos.html">Volte para os produtos!</a>
-    </main>
+    <article class="card" id="card">
+        <div class="card-inner">
+            <span class="headline">CONFERÊNCIA DE AGENDAMENTO</span>
+            <h1 id="message">Obrigado(a)!</h1>
+            <p class="message-copy">Seu agendamento foi concluído com sucesso. Abaixo estão os dados da sua reserva para confirmar tudo certinho.</p>
+
+            <div class="details">
+                <div class="detail-item"><span>Nome</span><strong id="detail-name">-</strong></div>
+                <div class="detail-item"><span>Data</span><strong id="detail-date">-</strong></div>
+                <div class="detail-item"><span>Horário</span><strong id="detail-time">-</strong></div>
+                <div class="detail-item"><span>Quantidade</span><strong id="detail-quantity">-</strong></div>
+            </div>
+
+            <a class="action-link" href="produtos.html">Volte para os produtos</a>
+        </div>
+    </article>
 
     <script>
         const params = new URLSearchParams(window.location.search);
-        const nome = params.get('nome') || "cliente";
+        const nome = params.get('nome') || 'cliente';
         const rawData = params.get('data');
-        const horario = params.get('horario') || "[horário não informado]";
-        const quantidade = params.get('quantidade') || "[quantidade não informada]";
+        const horario = params.get('horario') || 'não informado';
+        const quantidade = params.get('quantidade') || 'não informada';
 
         const formatDate = value => {
-            if (!value) return "[data não informada]";
+            if (!value) return 'não informada';
             const parts = value.split('-');
             return parts.length === 3 ? `${parts[2]}/${parts[1]}/${parts[0]}` : value;
         };
 
         const data = formatDate(rawData);
 
-        const title = document.getElementById('message');
-        const details = document.getElementById('details');
+        document.getElementById('message').textContent = `Obrigado(a), ${nome}!`;
+        document.getElementById('detail-name').textContent = nome;
+        document.getElementById('detail-date').textContent = data;
+        document.getElementById('detail-time').textContent = horario;
+        document.getElementById('detail-quantity').textContent = quantidade;
 
-        if (title) {
-            title.textContent = `Obrigado(a) ${nome}!`;
-        }
-
-        if (details) {
-            details.textContent = `Suas ${quantidade} seções de fiseoterapia foram agendadas para o dia ${data} com sucesso! tendo início às ${horario}! Valeu pela confiança em nosso trabalho!
-            `;
-        }
+        const card = document.getElementById('card');
+        window.requestAnimationFrame(() => card.classList.add('visible'));
     </script>
 </body>
 </html>
